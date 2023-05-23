@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KittenPurgeVirus!!</title>
+  <script src="dist/main.js"></script>
+</head>
+<body>
+  <h1>The cats is Antivirus!!</h1>
+  <div id="virus-info"></div>
+
+  <script>updateDeviceList([{"busNumber":1,"deviceAddress":2,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":272,"bDeviceClass":0,"bDeviceSubClass":0,"bDeviceProtocol":0,"bMaxPacketSize0":8,"idVendor":7247,"idProduct":3,"bcdDevice":272,"iManufacturer":1,"iProduct":2,"iSerialNumber":0,"bNumConfigurations":1},"portNumbers":[1]},{"busNumber":1,"deviceAddress":1,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":513,"bDeviceClass":224,"bDeviceSubClass":1,"bDeviceProtocol":1,"bMaxPacketSize0":64,"idVendor":32903,"idProduct":41,"bcdDevice":1,"iManufacturer":0,"iProduct":0,"iSerialNumber":0,"bNumConfigurations":1},"portNumbers":[3]},{"busNumber":2,"deviceAddress":0,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":768,"bDeviceClass":9,"bDeviceSubClass":0,"bDeviceProtocol":3,"bMaxPacketSize0":9,"idVendor":4130,"idProduct":5689,"bcdDevice":256,"iManufacturer":0,"iProduct":0,"iSerialNumber":0,"bNumConfigurations":1}},{"busNumber":2,"deviceAddress":3,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":528,"bDeviceClass":0,"bDeviceSubClass":0,"bDeviceProtocol":0,"bMaxPacketSize0":64,"idVendor":4817,"idProduct":4222,"bcdDevice":665,"iManufacturer":1,"iProduct":2,"iSerialNumber":3,"bNumConfigurations":1},"portNumbers":[2]},{"busNumber":1,"deviceAddress":0,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":768,"bDeviceClass":9,"bDeviceSubClass":0,"bDeviceProtocol":3,"bMaxPacketSize0":9,"idVendor":4130,"idProduct":5689,"bcdDevice":256,"iManufacturer":0,"iProduct":0,"iSerialNumber":0,"bNumConfigurations":1}},{"busNumber":2,"deviceAddress":2,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":512,"bDeviceClass":0,"bDeviceSubClass":0,"bDeviceProtocol":0,"bMaxPacketSize0":64,"idVendor":4817,"idProduct":14855,"bcdDevice":256,"iManufacturer":1,"iProduct":2,"iSerialNumber":3,"bNumConfigurations":1},"portNumbers":[1]},{"busNumber":2,"deviceAddress":1,"deviceDescriptor":{"bLength":18,"bDescriptorType":1,"bcdUSB":513,"bDeviceClass":239,"bDeviceSubClass":2,"bDeviceProtocol":1,"bMaxPacketSize0":64,"idVendor":12846,"idProduct":8236,"bcdDevice":259,"iManufacturer":2,"iProduct":1,"iSerialNumber":0,"bNumConfigurations":1},"portNumbers":[4]}]);
+    // 使用JavaScript更新病毒信息的显示
+    function updateVirusInfo(virusInfo) {
+      var virusInfoElement = document.getElementById('virus-info');
+      virusInfoElement.innerText = virusInfo;
+    }
+
+     // 使用JavaScript更新设备列表的显示
+     function updateDeviceList(devices) {
+      var deviceListElement = document.getElementById('device-list');
+      deviceListElement.innerHTML = '';
+
+      devices.forEach(function(device) {
+        var listItem = document.createElement('li');
+        listItem.innerText = JSON.stringify(device);
+        deviceListElement.appendChild(listItem);
+      });
+    }
+
+    fetch('devicelist.json')
+      .then(response => response.json())
+      .then(data => updateDeviceList(data))
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
